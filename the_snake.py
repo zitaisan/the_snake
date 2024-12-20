@@ -64,7 +64,8 @@ class Apple(GameObject):
 
     def randomize_position(self) -> None:
         """Устанавливает случайное положение яблока."""
-        self.position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE, randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
+        self.position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE,
+                         randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
 
     def draw(self) -> None:
         """Отрисовывает яблоко на экране."""
@@ -77,7 +78,8 @@ class Snake(GameObject):
     """Класс для создания и управления змейкой."""
 
     def __init__(self) -> None:
-        super().__init__((GRID_WIDTH // 2 * GRID_SIZE, GRID_HEIGHT // 2 * GRID_SIZE), SNAKE_COLOR)
+        super().__init__((GRID_WIDTH // 2 * GRID_SIZE,
+                          GRID_HEIGHT // 2 * GRID_SIZE), SNAKE_COLOR)
         self.length = 1
         self.positions: List[Tuple[int, int]] = [self.position]
         self.direction: Tuple[int, int] = RIGHT
@@ -96,9 +98,9 @@ class Snake(GameObject):
         if self.next_direction:
             self.direction = self.next_direction
             self.next_direction = None
-
         x, y = self.direction
-        new_pos = ((position[0] + (x * GRID_SIZE)) % SCREEN_WIDTH, (position[1] + (y * GRID_SIZE)) % SCREEN_HEIGHT)
+        new_pos = ((position[0] + (x * GRID_SIZE)) % SCREEN_WIDTH,
+                   (position[1] + (y * GRID_SIZE)) % SCREEN_HEIGHT)
         self.positions.insert(0, new_pos)
         if len(self.positions) > self.length:
             self.positions.pop()
@@ -109,8 +111,8 @@ class Snake(GameObject):
             rect = pygame.Rect(position, (GRID_SIZE, GRID_SIZE))
             pygame.draw.rect(screen, self.body_color, rect)
             pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
-
-        head_rect = pygame.Rect(self.positions[0], (GRID_SIZE, GRID_SIZE))
+        head_rect = pygame.Rect(self.positions[0],
+                                (GRID_SIZE, GRID_SIZE))
         pygame.draw.rect(screen, self.body_color, head_rect)
         pygame.draw.rect(screen, BORDER_COLOR, head_rect, 1)
 
