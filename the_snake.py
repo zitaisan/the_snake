@@ -164,7 +164,8 @@ def main() -> None:
         if snake.get_head_position() == apple.position:
             snake.length += 1
             apple.randomize_position()
-        if len(snake.positions) > 2 and snake.get_head_position() in snake.positions[2:]:
+        if (len(snake.positions) > 2 and snake.get_head_position()
+                in snake.positions[2:]):
             snake.reset()
 
         screen.fill(BOARD_BACKGROUND_COLOR)
