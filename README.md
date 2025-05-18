@@ -1,2 +1,1 @@
-# the_snake
-
+# the_snake Изгиб Питона
